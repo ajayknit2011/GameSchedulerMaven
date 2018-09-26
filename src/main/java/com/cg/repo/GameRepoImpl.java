@@ -8,9 +8,9 @@ public class GameRepoImpl implements GameRepo {
 
 	private Set<Game> games;
 	
-	public boolean save(Game g) {
+	public Game save(Game g) {
 		// TODO Auto-generated method stub
-		return true;
+		return null;
 	}
 
 	public Game findByName(String name) {
