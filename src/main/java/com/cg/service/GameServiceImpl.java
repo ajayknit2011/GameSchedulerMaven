@@ -1,34 +1,41 @@
 package com.cg.service;
 
 import com.cg.bean.Game;
+import com.cg.repo.GameRepo;
 
 public class GameServiceImpl implements GameService {
+	
 
-	public Game add(Game game) {
-		// TODO Auto-generated method stub
-		if(game==null ) {
-			
-			throw new IllegalArgumentException();
-		}
-		//Game game1=new Game("Cricket",3);
-		return null;
+	private GameRepo repo;
+
+	public GameServiceImpl(GameRepo repo) {
+	super();
+	this.repo = repo;
 	}
+	
 
-	/*
-	 * 
-	 * 
-	 * public Customer createWallet(String name, String phone, BigDecimal amount) {
+	public Game add(Game g) {
 		
-		if(name == null || phone == null || amount == null){
-			throw new IllegalArgumentException();
+		if(g.equals(null)) {
+			
+			throw new NullPointerException();
 		}
-		Customer customer = new Customer(name,phone, new Wallet(amount));
-		if(repo.save(customer)){
-			return customer;
+		
+	
+		else if (g.getGameName() == null ) {
+		throw new IllegalArgumentException();
 		}
+		
+		else {
+		Game game = new Game(g.getGameName(),g.getNoOfPlayers());
+		
+		if (repo.save(game).equals(g)) {
+		return game;
+		}
+	    }
 		return null;
-	}
-	 * */
+		}
 	
-	
+
+
 }
