@@ -23,4 +23,9 @@ public class DayRepoImpl implements DayRepo {
 		return null;
 	}
 
+	public Day findByName(String day) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

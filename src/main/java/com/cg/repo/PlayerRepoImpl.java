@@ -23,4 +23,11 @@ public class PlayerRepoImpl implements PlayerRepo {
 		return null;
 	}
 
+	public Player findByName(String player) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }
