@@ -1,6 +1,7 @@
 package com.cg.service;
 
 import com.cg.bean.Game;
+import com.cg.exception.DuplicateEntriesException;
 import com.cg.repo.GameRepo;
 
 public class GameServiceImpl implements GameService {
@@ -12,30 +13,14 @@ public class GameServiceImpl implements GameService {
 	super();
 	this.repo = repo;
 	}
-	
-
 	public Game add(Game g) {
-		
-		if(g.equals(null)) {
-			
-			throw new NullPointerException();
+		Game existinggame=repo.findByName(g.getGameName());
+		if(g==null ||g.getGameName()==null) {
+			throw new IllegalArgumentException();
 		}
-		
-	
-		else if (g.getGameName() == null ) {
-		throw new IllegalArgumentException();
+		if(existinggame !=null) {
+			throw new DuplicateEntriesException();
 		}
-		
-		else {
-		Game game = new Game(g.getGameName(),g.getNoOfPlayers());
-		
-		if (repo.save(game).equals(g)) {
-		return game;
+		return repo.save(g);
 		}
-	    }
-		return null;
-		}
-	
-
-
 }
